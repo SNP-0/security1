@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.security.model.UserMapper">
+	
+	<insert id="insertMember" parameterType="UserDto" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO USER(USERNAME, PASSWORD, EMAIL, ROLE, CREATEDATE, PROVIDER, PROVIDERID) VALUES(#{username}, #{password}, #{email}, #{role}, now(), #{provider}, #{providerId})
+	</insert>
+	
+	<select id="findByUsername" parameterType="String" resultType="UserDto">
+		SELECT * FROM USER WHERE USERNAME=#{username}
+	</select>
+	
+</mapper>
